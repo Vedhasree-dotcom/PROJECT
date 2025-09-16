@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <style>
+    body{
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: rgb(250, 239, 225);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        header{
+            background-color: rgb(220, 183, 138);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: fixed;
+            z-index: 4;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .text{
+            font-size: 14px;
+            font-weight: 600;
+            animation: scroll-text 12s linear infinite;
+
+        }
+        @keyframes scroll-text {
+      0% {
+        transform: translateX(100%);  
+      }
+      100% {
+        transform: translateX(-100%); 
+      }
+    }
+        
+        .navbar{
+            display: flex;
+            position: fixed;
+            width: 100%;
+            justify-content: center;
+            background-color: rgb(250, 230, 205);
+            margin-top: 20px;
+            z-index: 4;
+        }
+        .logo img{
+            margin-left: 50px;
+            height: 78px;
+            border-radius: 60px;
+        }
+        .contents{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 100px;
+            padding-left: 250px;
+            gap: 25px;
+        }
+        .register{
+            color: rgb(148, 94, 28);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        
+        
+        .navbar-nav{
+            gap: 10px;
+            padding-left: 40px;
+        }
+        .nav-link{
+            font-size: 14px;
+        }
+        .nav-link:hover{
+            color: rgb(209, 109, 109);
+            font-weight: bold;
+        }
+        .dropdown-item:hover{
+            color: rgb(230, 135, 72);
+        }
+        .btn{
+            background-color: rgb(189, 106, 106);
+            color: white;
+            width: 100px;
+
+        }
+        .btn:hover{
+            background-color: rgb(228, 177, 161);
+        }
+        @media (max-width:995px){
+            .navbar{
+                position: fixed;
+            }
+            .logo{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: auto;
+            }
+            header{
+                visibility: hidden;
+            }
+            .navbar-toggler{
+                margin-right: 300px;
+                margin-left: 10px;
+            }
+            
+            .nav-link:hover{
+            color: rgb(209, 109, 109);
+            font-weight: bold;
+            }
+        }
+        @media (min-width:340px )and (max-width:740px){
+            .navbar{
+                position: fixed;
+            }
+            .logo{
+                display: flex;
+                justify-content: flex-end;
+                margin-left: 230px;
+                margin-top: 0;
+            }
+            .logo img{
+                height: 60px;
+            }
+            .searchcontainer{
+                display: flex;
+                justify-content: center;
+            }
+        }
+        @media (max-width:420px){
+            .navbar{
+                position: fixed;
+            }
+            .header{
+                display: none;
+            }
+            .nav-item{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .logo{
+                display: flex;
+                justify-content: flex-end;
+            }
+            .nav-item .contents{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        /* ............ */
+
+        .banner{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            height: 350px;
+            object-fit: cover;
+            width: 100%;
+            margin-top: 120px;
+            position: relative;
+            /* margin: auto; */
+        }
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 74.5%;
+            background-color: rgba(235, 229, 222, 0.4);
+            z-index: 2;
+        }
+        .about{
+            text-align: center;
+            position: absolute;
+            margin:200px 70px;
+            z-index: 3;
+        }
+        .about h6{
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .about a{
+            color: rgb(231, 196, 196);
+            text-decoration: none;
+        }
+        .about a:hover{
+            color: cornsilk;
+        }
+        .sub{
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: brown;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 60px 80px;
+        }
+        .para{
+            font-size: 18px;
+            font-weight: 400;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 14px 80px;
+            text-align: justify;
+        }
+
+        /* ........ */
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 80px;
+        }
+        .item{
+            background-color: rgb(255, 247, 235) ;
+            padding: 30px 30px;
+            border-radius: 30px;
+            box-shadow: 2px 2px 2px rgb(159, 157, 157);
+        }
+        .item p{
+            font-size: 15px;
+            font-weight: 400;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-top: 30px;
+            text-align: justify;
+            
+        }
+
+
+        /* ................. */
+        .footer{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7)), url('pexels-viktoria-slowikowska-5678091.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            z-index: 2;
+            margin-top: 100px;
+            padding: 40px 0 20px;
+            color: wheat;
+        }
+        
+        .footer-row{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .footer-box{
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .brand-section span{
+            color: wheat;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .brand-section p{
+            color: wheat;
+            font-weight: 500;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        
+        .footer-card{
+            background-color: rgba(139, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            height: 100%;
+        }
+        
+        .footer-card h5{
+            color: wheat;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-links a{
+            text-decoration: none;
+            color: wheat;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover{
+            color: #FFD700;
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            color: wheat;
+            line-height: 1.6;
+        }
+        
+        .contact-info i {
+            color: wheat;
+            width: 25px;
+        }
+        
+        .social-icons {
+            margin-top: 20px;
+        }
+        
+        .social-icons i {
+            font-size: 24px;
+            color: wheat;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons i:hover {
+            color: burlywood;
+            transform: scale(1.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            color: wheat;
+            padding: 20px 0 10px;
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .copyright a{
+            color: rgb(218, 159, 159);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .copyright a:hover{
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-row {
+                flex-direction: column;
+            }
+            
+            .footer-box {
+                min-width: 100%;
+            }
+        }
+
+
+
+        
+
+
+</style>
+</head>
+
+<body>
+    <header>
+    <div class="text">
+    Saraswathi Pickles <b>.</b> Free Local Delivery <b>.</b> Recipes <b>.</b> Purely Home made Pickles <b>.</b> Kerala <b>.</b> India <b>.</b> All over the Kerala
+    </div>
+  </header>
+
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="logo">
+            <img src="logo.png" alt="">
+        </div>
+      
+        <div class="searchcontainer ps-3 ms-2">
+        <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        </form>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html" id="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="more.html">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="specials.html">Specials</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop by taste
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#"><b>Mango</b></a></li>
+            <li><a class="dropdown-item" href="#"><b>Lemon</b></a></li>
+            <li><a class="dropdown-item" href="#"><b>Amla</b></a></li>
+            <li><a class="dropdown-item" href="#"><b>Ginger</b></a></li>
+            <li><a class="dropdown-item" href="#"><b>Dates</b></a></li>
+            <li><a class="dropdown-item" href="#"><b>Grapes</b></a></li>
+         </ul>
+            </li> -->
+         <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <div class="contents">
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Cart
+        </button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Your cart is empty</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Buy it</button>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="register" href="register.html">
+    <i class="fa-solid fa-lock"></i>
+</a>
+
+</div>
+</li>
+</div>
+</nav>
+<section>
+    <div class="banner">
+        <div class="overlay"></div>
+        <div class="about">
+        <h6>About</h6>
+        <span><a href="index.html">Home > </a><a href=""> about</a></span>
+        </div>
+        <img src="pexels-apendse-2039570.jpg" class="main" alt="">
+    </div>
+</section>
+<section>
+    <div class="story">
+        <h4 class="sub"> Story Behind Saraswathi Pickles</h4>
+        <p class="para">
+            Long before “pickles in bottles” became common, our grandmother would carefully prepare them in clay jars, letting the flavors grow richer with time. The aroma of spices, the tang of tamarind, and the warmth of ginger filled our home, making every meal special.
+            Among all her creations, one stood out — Pulinji, a kerala pickle like dish - the sweet and tangy ginger pickle. It wasn’t just food; it was her signature, a taste that carried love, care, and tradition in every spoonful.
+            Her pickles weren’t just condiments, they were memories bottled with love. And among them all, her Pulinji the sweet, spicy, and tangy ginger pickle became legendary in our family and neighborhood.
+            A spoonful of it could brighten even the simplest meal, and every jar she made was a piece of her heart shared with others.
+            Today, through Saraswathi Pickles, we continue her legacy. Every jar is made the way she taught us patiently, traditionally, and with the same heart that made her pickles unforgettable. 
+            When you taste these Pickles, you’re not just enjoying a recipe you’re tasting a story passed down through generations.
+        </p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="item">
+            <h5><i class="fa-solid fa-crosshairs"></i>  Our Mission</h5>
+            <p>Saraswathi Pickles, we celebrate India’s culinary heritage through authentic pickles and pulinji. Committed to quality, we use 100% natural ingredients and honor traditional recipes. 
+                By sourcing locally and embracing flavor innovation, we connect people through the vibrant, diverse tastes of Indian cuisine.</p>
+        </div>
+        <div class="item">
+            <h5> <i class="fa-solid fa-bullseye"></i>  Our Vision</h5>
+            <p>Saraswathi Pickles, we envision a world where the rich flavors of Indian cuisine are celebrated in every home. We aspire to be a trusted name for authentic pickles and pulinji's, 
+                connecting people through the joy of cooking and the warmth of shared meals, fostering cultural appreciation.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="footer">
+        <div class="footer-row">
+            <div class="footer-box">
+                <div class="brand-section">
+                    <span>Saraswathi<br>Pickles</span>
+                    <p>At Saraswathi Pickles, we proudly offer authentic pickles and pulinji's celebrating India's rich culinary heritage.</p>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <div class="footer-card">
+                    <h5>Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="index.html">Pickles</a>
+                        <a href="specials.html">Specials</a>
+                        <a href="index.html">New Arrivals</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <div class="footer-card">
+                    <h5>Help</h5>
+                    <div class="footer-links">
+                        <a href="#">Order Status</a>
+                        <a href="#">Delivery</a>
+                        <a href="#">Returns</a>
+                        <a href="#">Payment Options</a>
+                        <a href="contact.html">Contact Us On Saraswathipickles Inquiries</a>
+                        <a href="contact.html">Contact Us On All Other Inquiries</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-box">
+                <div class="footer-card">
+                    <h5>Store Location</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-location-dot"></i> Plot no – 310,<br>
+                        Vaduvatta Nilayam, Kadalundi Road,<br> Feroke, Kozhikode,<br>
+                        Kerala– 673301.</p>
+                        
+                        <p><i class="fas fa-envelope"></i> saraswathipickles@gmail.com</p>
+                        
+                        <p><i class="fas fa-phone"></i> +91 9778548096</p>
+                        
+                        <div class="social-icons">
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 <a href="#">saraswathipickles.com</a> All rights reserved | Designed & developed by <a href="#">VS4.Agency</a></p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+
+</body>
+</html>
