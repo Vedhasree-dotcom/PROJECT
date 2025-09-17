@@ -318,16 +318,7 @@
         }
 
         /* ....... */
-        .overlay{
-            position: absolute;
-            top: 222.3%;
-            left: 5%;
-            right: 5%;
-            width: 89.5%;
-            height: 615px;
-            background-color: rgba(235, 229, 222, 0.4);
-            z-index: 2;
-        }
+        
         .carousel-inner{
             height: 615px;
             background-color: rgba(0,0,0,0.1),rgba(0,0,0,0.1);
@@ -345,6 +336,8 @@
         
         .carousel-item img{
             object-fit: contain;
+            opacity: 0.5;
+
             
         }
         .caption h5{
