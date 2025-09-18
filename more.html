@@ -91,69 +91,56 @@
         .btn:hover{
             background-color: rgb(228, 177, 161);
         }
-        @media (max-width:995px){
-            .navbar{
+        /* Navbar Media Queries */
+        @media (max-width: 1200px) {
+            .navbar {
                 position: fixed;
-            }
-            .logo{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-right: auto;
-            }
-            header{
-                visibility: hidden;
-            }
-            .navbar-toggler{
-                margin-right: 300px;
-                margin-left: 10px;
             }
             
-            .nav-link:hover{
-            color: rgb(209, 109, 109);
-            font-weight: bold;
+            .contents {
+                margin: 0 50px;
+                padding-left: 150px;
             }
-        }
-        @media (min-width:340px )and (max-width:740px){
-            .navbar{
-                position: fixed;
-            }
-            .logo{
-                display: flex;
-                justify-content: flex-end;
-                margin-left: 230px;
-                margin-top: 0;
-            }
-            .logo img{
+            
+            .logo img {
+                margin-left: 20px;
                 height: 60px;
             }
-            .searchcontainer{
-                display: flex;
-                justify-content: center;
+        }
+        
+        @media (max-width: 992px) {
+            .contents {
+                padding-left: 0;
+                margin: 0 20px;
+            }
+            
+            .navbar-nav {
+                padding-left: 0;
             }
         }
-        @media (max-width:420px){
-            .navbar{
-                position: fixed;
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                margin-top: 0;
             }
-            .header{
-                display: none;
+            
+            .contents {
+                flex-direction: column;
+                gap: 10px;
             }
-            .nav-item{
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            
+            .logo img {
+                margin: 10px auto;
+                display: block;
             }
-            .logo{
-                display: flex;
-                justify-content: flex-end;
-            }
-            .nav-item .contents{
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            
+            .btn {
+                width: 80px;
+                font-size: 14px;
             }
         }
+
         /* ............ */
 
         .banner{
