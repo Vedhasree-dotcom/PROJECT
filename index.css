@@ -104,10 +104,11 @@
             background-color: brown;
             color: white;
             width: 100px;
+            margin-left: 40px;
         }
         
         .btn:hover {
-            background-color: rgb(228, 177, 161);
+            background-color: rgb(224, 168, 151);
         }
         
         /* Navbar Media Queries */
