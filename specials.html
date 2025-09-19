@@ -192,7 +192,6 @@
             width: 100%;
             margin-top: 120px;
             position: relative;
-            /* margin: auto; */
         }
         
         .specials{
@@ -214,11 +213,56 @@
         .specials a:hover{
             color: cornsilk;
         }
-
-
-
-
-        /* ...................... */
+        
+        @media (max-width: 1200px) {
+            .specials {
+                margin: 180px 50px;
+            }
+        }
+        @media (max-width: 992px) {
+            .main {
+                height: 300px;
+                margin-top: 100px;
+            }
+            .specials {
+                margin: 150px 40px;
+            }
+            .specials h6 {
+                font-size: 26px;
+                margin-top: 80px;
+            }
+        }
+        @media (max-width: 768px) {
+            .main {
+                height: 250px;
+                margin-top: 80px;
+            }
+            .specials {
+                margin: 120px 30px;
+            }
+            .specials h6 {
+                font-size: 22px;
+                margin-top: 60px;
+            }
+        }
+        @media (max-width: 576px) {
+            .main {
+                height: 200px;
+                margin-top: 60px;
+            }
+            .specials {
+                margin: 90px 20px;
+            }
+            .specials h6 {
+                font-size: 18px;
+                margin-top: 40px;
+            }
+            .specials a {
+                font-size: 14px;
+            }
+        }
+        
+        /* .................................... */
         .sub{
             text-align: center;
             font-size: 40px;
@@ -235,7 +279,6 @@
         }
         h5{
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
         }
         .tamarind{
             height: 360px;
@@ -247,15 +290,64 @@
             margin-top: 15px;
             text-align: justify;
         }
-
-
-        /* ................... */
-
+        
+        @media (max-width: 1200px) {
+            .grid {
+                margin: 30px 70px;
+            }
+        }
+        @media (max-width: 992px) {
+            .sub {
+                font-size: 34px;
+            }
+            .grid {
+                margin: 25px 50px;
+                gap: 25px;
+            }
+            .tamarind {
+                height: 320px;
+            }
+            .pickle {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            .sub {
+                font-size: 28px;
+                margin: 15px 0;
+            }
+            .grid {
+                flex-direction: column;
+                margin: 20px 40px;
+                gap: 20px;
+            }
+            .tamarind {
+                width: 100%;
+                height: auto;
+                max-height: 400px;
+            }
+            .pickle {
+                font-size: 15px;
+            }
+        }
+        @media (max-width: 576px) {
+            .sub {
+                font-size: 24px;
+            }
+            .grid {
+                margin: 15px 20px;
+                gap: 15px;
+            }
+            .pickle {
+                font-size: 14px;
+            }
+        }
+        
+        /* ....................................... */
         .products{
             display: flex;
             justify-content: center;
             margin: 40px;
-
         }
         .mrow{
             display: grid;
@@ -266,7 +358,6 @@
             grid-template-rows: auto;
             position: absolute;
             z-index: 2;
-            
         }
         .card1{
             height: 440px;
@@ -281,22 +372,21 @@
         }
         .card1:hover{
             transition: 1s;
-          transform: scale(1.1);     /*for zooming*/
-          border: none;
+            transform: scale(1.1);
+            border: none;
         }
         .card1-img{
-        height: 220px;        
-        width: auto;          
-        object-fit: contain; 
-        margin: 0 auto;       
-        display: block;
+            height: 220px;        
+            width: auto;          
+            object-fit: contain; 
+            margin: 0 auto;       
+            display: block;
         }
         .card1-title{
             font-size: 15px;
             margin: 14px;
             text-align: left;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
         }
         .card1-text{
             font-size: 14px;
@@ -320,9 +410,108 @@
             margin-left: 22px;
             padding: 10px 20px;
         }
-
-        /* ........................ */
-
+        
+        @media (max-width: 1200px) {
+            .mrow {
+                gap: 25px;
+            }
+            .card1 {
+                height: 420px;
+            }
+        }
+        @media (max-width: 992px) {
+            .products {
+                margin: 35px 20px;
+            }
+            .mrow {
+                grid-template-columns: auto auto;
+                gap: 22px;
+            }
+            .card1 {
+                height: 400px;
+                width: 16rem;
+            }
+            .card1-img {
+                height: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+            .products {
+                margin: 30px 15px;
+            }
+            .mrow {
+                grid-template-columns: auto auto;
+                gap: 20px;
+            }
+            .card1 {
+                height: 380px;
+                width: 15rem;
+            }
+            .card1-img {
+                height: 180px;
+            }
+            .card1-title {
+                font-size: 14px;
+                margin: 12px;
+            }
+            .card1-text, .card1-desc {
+                font-size: 12px;
+            }
+            .cart {
+                padding: 8px 16px;
+                font-size: 11px;
+                margin-left: 15px;
+            }
+        }
+        @media (max-width: 650px) {
+            .mrow {
+                grid-template-columns: auto;
+            }
+            .card1 {
+                width: 18rem;
+                height: 400px;
+            }
+            .card1-img {
+                height: 200px;
+            }
+        }
+        @media (max-width: 576px) {
+            .products {
+                margin: 25px 10px;
+            }
+            .mrow {
+                gap: 15px;
+            }
+            .card1 {
+                width: 16rem;
+                height: 380px;
+                padding: 10px;
+            }
+            .card1-img {
+                height: 170px;
+            }
+            .card1-title {
+                font-size: 13px;
+                margin: 10px;
+                text-align: center;
+            }
+            .cart {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        @media (max-width: 400px) {
+            .card1 {
+                width: 14rem;
+                height: 360px;
+            }
+            .card1-img {
+                height: 150px;
+            }
+        }
+        
+        /* ....................................... */
         .head{
             text-align: center;
             font-size: 40px;
@@ -338,7 +527,6 @@
             display: flex;
             justify-content: center;
             margin: 580px;
-
         }
         .row{
             display: grid;
@@ -349,7 +537,6 @@
             grid-template-rows: auto;
             position: absolute;
             z-index: 2;
-            
         }
         .card{
             height: 445px;
@@ -364,22 +551,21 @@
         }
         .card:hover{
             transition: 1s;
-          transform: scale(1.1);     /*for zooming*/
-          border: none;
+            transform: scale(1.1);
+            border: none;
         }
         .card-img{
-        height: 220px;        
-        width: auto;          
-        object-fit: contain; 
-        margin: 0 auto;       
-        display: block;
+            height: 220px;        
+            width: auto;          
+            object-fit: contain; 
+            margin: 0 auto;       
+            display: block;
         }
         .card-title{
             font-size: 15px;
             margin: 14px;
             text-align: left;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
         }
         .card-text{
             font-size: 13px;
@@ -392,8 +578,140 @@
             color: red ;
             font-weight: 500;
         }
-
-       /* ................................. */
+        
+        @media (max-width: 1400px) {
+            .head {
+                margin-left: 500px;
+            }
+            .brined {
+                margin: 550px 0;
+            }
+        }
+        @media (max-width: 1200px) {
+            .head {
+                margin-left: 450px;
+                margin-top: 400px;
+            }
+            .brined {
+                margin: 500px 0;
+            }
+            .row {
+                grid-template-columns: auto auto auto;
+                gap: 20px;
+            }
+            .card {
+                height: 430px;
+            }
+        }
+        @media (max-width: 992px) {
+            .head {
+                margin-left: 350px;
+                margin-top: 350px;
+                font-size: 34px;
+            }
+            .brined {
+                margin: 450px 0;
+            }
+            .row {
+                grid-template-columns: auto auto;
+                gap: 22px;
+            }
+            .card {
+                height: 420px;
+                width: 16rem;
+            }
+            .card-img {
+                height: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+            .head {
+                margin-left: 250px;
+                margin-top: 300px;
+                font-size: 28px;
+            }
+            .brined {
+                margin: 400px 0 100px;
+                position: relative;
+            }
+            .row {
+                position: relative;
+                grid-template-columns: auto auto;
+                gap: 20px;
+            }
+            .card {
+                height: 400px;
+                width: 15rem;
+            }
+            .card-img {
+                height: 180px;
+            }
+            .card-title {
+                font-size: 14px;
+                margin: 12px;
+            }
+            .card-text, .card-price {
+                font-size: 12px;
+            }
+        }
+        @media (max-width: 650px) {
+            .head {
+                margin-left: 180px;
+                margin-top: 280px;
+            }
+            .row {
+                grid-template-columns: auto;
+            }
+            .card {
+                width: 18rem;
+                height: 420px;
+            }
+            .card-img {
+                height: 200px;
+            }
+        }
+        @media (max-width: 576px) {
+            .head {
+                margin-left: 130px;
+                margin-top: 250px;
+                font-size: 24px;
+            }
+            .brined {
+                margin: 350px 0 80px;
+            }
+            .row {
+                gap: 15px;
+            }
+            .card {
+                width: 16rem;
+                height: 400px;
+                padding: 10px;
+            }
+            .card-img {
+                height: 170px;
+            }
+            .card-title {
+                font-size: 13px;
+                margin: 10px;
+                text-align: center;
+            }
+        }
+        @media (max-width: 400px) {
+            .head {
+                margin-left: 90px;
+                margin-top: 230px;
+                font-size: 22px;
+            }
+            .card {
+                width: 14rem;
+                height: 380px;
+            }
+            .card-img {
+                height: 150px;
+            }
+        }
+        
+        /* ......................... */
         .footer{
             background-image: linear-gradient(rgba(0, 0, 0, 0.7)), url('pexels-viktoria-slowikowska-5678091.jpg');
             background-position: center;
@@ -511,370 +829,95 @@
             text-decoration: underline;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 1200px) {
+            .footer {
+                margin-top: 200px;
+            }
+        }
+        @media (max-width: 992px) {
+            .footer {
+                margin-top: 150px;
+                padding: 30px 0 15px;
+            }
             .footer-row {
-                flex-direction: column;
+                justify-content: space-between;
             }
-            
             .footer-box {
-                min-width: 100%;
+                min-width: 220px;
             }
-        }
-
-        
-        /* Medium devices */
-        @media (max-width: 991px) and (min-width: 768px) {
-            .navbar {
-                padding: 0 15px;
-            }
-            
-            .logo img {
-                margin-left: 20px;
-                height: 70px;
-            }
-            
-            .contents {
-                padding-left: 100px;
-                margin: 0 50px;
-            }
-            
-            .grid {
-                flex-direction: column;
-                margin: 30px 50px;
-            }
-            
-            .tamarind {
-                width: 100%;
-                height: auto;
-            }
-            
-            .mrow {
-                grid-template-columns: auto auto;
-            }
-            
-            .row {
-                grid-template-columns: auto auto;
-            }
-            
-            .specials h6 {
-                font-size: 24px;
-            }
-            
-            .sub, .head {
-                font-size: 32px;
-            }
-            
-            .brined {
-                margin: 900px 0;
-            }
-        }
-        
-        /* Small devices */
-        @media (max-width: 767px) and (min-width: 576px) {
-            header {
-                display: none;
-            }
-            
-            .navbar {
-                margin-top: 0;
-            }
-            
-            .logo img {
-                height: 60px;
-                margin-left: 220px;
-            }
-            
-            .searchcontainer {
-                width: 40%;
-            }
-            
-            .navbar-toggler {
-                margin-right: 40px;
-            }
-            
-            .main {
-                height: 250px;
-                margin-top: 80px;
-            }
-            
-
-            .specials {
-                margin: 130px 20px;
-            }
-            
-            .specials h6 {
-                font-size: 20px;
-                margin-top: 50px;
-            }
-            
-            .grid {
-                display: flex;
-                flex-direction: column;
-                margin: 20px 30px;
-                gap: 20px;
-            }
-            
-            .tamarind {
-                width: 100%;
-                height: 500px;
-            }
-            
-            .pickle {
-                font-size: 15px;
-            }
-            
-            .sub, .head {
+            .brand-section span {
                 font-size: 28px;
             }
-            
-            .products {
-                margin: 30px 10px;
-            }
-            
-            .mrow {
-                grid-template-columns: auto auto auto;
-                gap: 20px;
-                position: relative;
-            }
-            
-            .card1, .card {
-                width: 100% !important;
-                height: auto;
-                margin-bottom: 20px;
-            }
-            
-            .brined {
-                margin: 0;
-                position: relative;
-            }
-            
-            .row {
-                grid-template-columns: auto;
-                gap: 20px;
-                position: relative;
-            }
-            
-            .footer {
-                margin-top: 50px;
-            }
-            
-            .footer-row {
-                flex-direction: column;
-            }
-            
-            .footer-box {
-                min-width: 100%;
+            .brand-section p {
+                font-size: 15px;
             }
         }
-        
-        /* Extra small devices */
-        @media (max-width: 575px) {
-            header {
-                display: none;
-            }
-            
-            .navbar {
-                margin-top: 0;
-                padding: 5px 0;
-                position: fixed;
-                z-index: 5;
-            }
-            
-            .logo img {
-                height: 50px;
-                margin-left: 30px;
-            }
-            
-            .searchcontainer {
-                width: 50%;
-            }
-            
-            .navbar-toggler {
-                margin-right: 5px;
-                padding: 4px 8px;
-            }
-            
-            .form-control {
-                font-size: 12px;
-                padding: 5px;
-            }
-            
-            .nav-link {
-                font-size: 13px;
-            }
-            
-            .btn {
-                width: 80px;
-                font-size: 12px;
-                padding: 5px;
-            }
-            
-            .register {
-                font-size: 16px;
-            }
-            
-            .main {
-                height: 200px;
-                margin-top: 60px;
-            }
-            
-            .specials {
-                margin: 100px 10px;
-            }
-            
-            .specials h6 {
-                font-size: 18px;
-                margin-top: 30px;
-            }
-            
-            .specials a {
-                font-size: 14px;
-            }
-            
-            .grid {
-                flex-direction: column;
-                margin: 15px 20px;
-                gap: 10px;
-            }
-            
-            .tamarind {
-                width: 100%;
-                height: auto;
-            }
-            
-            .pickle {
-                font-size: 14px;
-            }
-            
-            .sub{
-                font-size: 24px;
-                margin: 5px;
-            }
-            .head {
-                font-size: 24px;
-                margin: 50px;
-            }
-            
-            .products {
-                margin: 20px 5px;
-            }
-            
-            .mrow {
-                grid-template-columns: auto;
-                gap: 15px;
-                position: relative;
-            }
-            
-            .card1, .card {
-                width: 18rem !important;
-                height: auto;
-                padding: 8px;
-                margin-bottom: 15px;
-            }
-            
-            .card1-title, .card-title {
-                font-size: 14px;
-                margin: 10px;
-            }
-            
-            .card1-text, .card-text {
-                font-size: 12px;
-            }
-            
-            .card1-desc, .card-price {
-                font-size: 12px;
-            }
-            
-            .cart {
-                font-size: 11px;
-                padding: 8px 15px;
-                margin-left: 10px;
-            }
-            
-            .brined {
-                margin: 0;
-                position: relative;
-            }
-            
-            .row {
-                grid-template-columns: auto;
-                gap: 15px;
-                position: relative;
-            }
-            
+        @media (max-width: 768px) {
             .footer {
-                margin-top: 30px;
-                padding: 20px 0 10px;
+                margin-top: 100px;
+                padding: 25px 0 10px;
             }
-            
             .footer-row {
                 flex-direction: column;
-                padding: 0 10px;
+                gap: 15px;
             }
-            
             .footer-box {
                 min-width: 100%;
                 margin-bottom: 20px;
             }
-            
+            .footer-card {
+                padding: 12px;
+            }
+            .brand-section span {
+                font-size: 26px;
+            }
+            .social-icons i {
+                font-size: 22px;
+                margin-right: 12px;
+            }
+            .copyright {
+                margin-top: 30px;
+                padding: 15px 0 8px;
+                font-size: 14px;
+            }
+        }
+        @media (max-width: 576px) {
+            .footer {
+                margin-top: 80px;
+                padding: 20px 0 10px;
+            }
+            .footer-row {
+                padding: 0 15px;
+            }
             .brand-section span {
                 font-size: 24px;
             }
-            
             .brand-section p {
                 font-size: 14px;
+                margin-top: 15px;
             }
-            
-            .footer-card {
-                padding: 10px;
-            }
-            
             .footer-card h5 {
                 font-size: 16px;
             }
-            
             .footer-links a {
                 font-size: 14px;
             }
-            
             .contact-info p {
                 font-size: 14px;
             }
-            
+            .social-icons {
+                margin-top: 15px;
+            }
             .social-icons i {
                 font-size: 20px;
+                margin-right: 10px;
             }
-            
             .copyright {
-                margin-top: 30px;
+                margin-top: 25px;
                 font-size: 12px;
+                padding: 10px 0 5px;
             }
         }
-        
-        @media (max-width: 340px) {
-            .navbar {
-                margin-top: 0;
-            }
-           
-            .sub, .head {
-                font-size: 20px;
-            }
-            
-            .specials h6 {
-                font-size: 16px;
-            }
-        }
-        /* medium screens */
-        @media (min-width: 1400px) {    
-            .container {
-                max-width: 1320px;
-            }
-            
-            .grid {
-                margin: 40px 150px;
-            }
-        }
-
 
     </style>
 </head>
