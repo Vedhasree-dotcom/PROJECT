@@ -321,7 +321,7 @@
             }
         }
 
-        /* Carousel Section */
+        /* ........................*/
         .carousel-inner {
             height: 615px;
             background-color: rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1);
@@ -426,7 +426,7 @@
             }
         }
 
-        /* About Section */
+        /* .................... */
         .grid {
             display: flex;
             justify-content: center;
@@ -508,7 +508,7 @@
             }
         }
 
-        /* Poster Section */
+        /* ................... */
         .head {
             background-color: rgb(252, 218, 173);
             margin-top: 60px;
@@ -520,7 +520,7 @@
             align-items: center;
             background-color: rgb(252, 218, 173);
             padding: 20px;
-            gap: 100px;
+            gap: 30px;
             text-align: center;
         }
         
@@ -528,7 +528,7 @@
             display: flex;
             justify-content: center;
             background-color: bisque;
-            gap: 60px;
+            gap: 40px;
             padding: 20px 20px;
             border-radius: 30px;
             box-shadow: 2px 2px grey;

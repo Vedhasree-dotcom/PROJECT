@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
 
@@ -193,13 +194,13 @@
             font-size: 15px;
             margin-left:10px ;
         }
+        
+        /* ..................... */
+
+        
 
 
         
-        
-        
-
-
 
         /* ................. */
         .footer{
@@ -460,14 +461,7 @@
     <hr>
     <span><h6>CATEGORY: <a href="index.html" class="pickles" style="text-decoration: none; padding-left: 6px; color: rgb(122, 119, 119); font-size: 15px;">Veg Pickles</a> </h6></span>
 </div>
-
 </div>
-
-
-
-
-
-
 
 
 
@@ -536,7 +530,45 @@
 
 
 
+<!-- <script>
+    const emailRegex= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
+
+    function validateField(fieldId){                     //parameter
+        const input=document.getElementById(fieldId);    //In this element is in input
+        const value=input.value.trim();     //trim() used to remove the space between value;and only take the values
+
+        if(fieldId === 'email'){             
+            if(!emailRegex.test(value)){
+                input.style.borderColor='red';
+                document.getElementById('emailError').style.visibility='visible';
+            }
+            else{
+                input.style.borderColor='#ccc';
+                document.getElementById('emailError').style.visibility='hidden';
+            }
+        }
+    }
+
+    function validateForm(e){
+      e.preventDefault();     // to prevents automatic submission
+
+
+      const emailInput = document.getElementById('email');
+
+      if(
+        emailRegex.test(emailInput.value.trim()) 
+       ) {
+        alert('Form is valid Ready to submit.');
+       } else{
+        alert('Please fix the errors in the form.');
+       }
+    }
+
+
+</script>
+
+ -->
 
 
 
