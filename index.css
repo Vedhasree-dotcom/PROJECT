@@ -71,7 +71,7 @@
             justify-content: center;
             align-items: center;
             margin: 0 100px;
-            padding-left: 250px;
+            padding-left: 360px;
             gap: 25px;
         }
         
@@ -95,22 +95,67 @@
             color: rgb(209, 109, 109);
             font-weight: bold;
         }
+
         
-        .dropdown-item:hover {
-            color: rgb(230, 135, 72);
+        .cart-btn {
+            position: fixed;
+            z-index: 1050;
+            background-color: brown;
+            color:white;
         }
-        
-        .btn {
+        .cart-btn:hover{
+            background-color: rgb(201, 116, 116);
+
+        }
+        .offcanvas {
+            width: 600px;
+            background-color: rgb(254, 234, 209);
+        }
+        .cart-item {
+            background-color: rgb(253, 221, 187);
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .cart-item-img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 40px 0;
+            color: #6c757d;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            color: white;
+            background-color: burlywood;
+            border-radius: 50%;
+            width: 20px;
+            height: 25px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+        .checkout{
             background-color: brown;
             color: white;
-            width: 100px;
-            margin-left: 40px;
+            font-weight: 500;
         }
-        
-        .btn:hover {
-            background-color: rgb(224, 168, 151);
-        }
-        
+
+
+       
+         
         /* Navbar Media Queries */
         @media (max-width: 1200px) {
             .navbar {
@@ -137,6 +182,7 @@
             .navbar-nav {
                 padding-left: 0;
             }
+            
         }
         
         @media (max-width: 768px) {
@@ -155,10 +201,7 @@
                 display: block;
             }
             
-            .btn {
-                width: 80px;
-                font-size: 14px;
-            }
+            
         }
 
         /* ..................... */

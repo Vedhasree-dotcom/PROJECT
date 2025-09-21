@@ -38,58 +38,167 @@
             <li class="nav-item">
                 <a class="nav-link" href="specials.html">Specials</a>
             </li>
-            <!-- <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Shop by taste
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><b>Mango</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Lemon</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Amla</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Ginger</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Dates</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Grapes</b></a></li>
-         </ul>
-          </li> -->
+            
          <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact</a>
           </li>
         <li class="nav-item">
-          <div class="contents">
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Cart
+        <div class="contents">
+        <button type="button" class="btn  position-relative cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+          <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
         </button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Your cart is empty</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Buy it</button>
-      </div>
-    </div>
-  </div>
-</div>
 <a class="register" href="register.html">
-  <i class="fa-solid fa-lock"></i>
-</a>
-<!-- <a class="user" href="">
   <i class="fa-solid fa-user"></i>
-</a> -->
-
-
+</a>
 
 </div>
 </li>
+</ul>
 </div>
 </nav>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div id="emptyCart" class="empty-cart">
+                <!-- <i class="bi bi-cart-x" style="font-size: 3rem;"></i> -->
+                <p>Your cart is empty</p>
+            </div>
+            <div id="cartItems" class="d-none">
+                <div class="list-group list-group-flush" id="cartItemsList">  
+                     
+                </div>
+                <div class="p-3 border-top">
+                    <div class="d-flex justify-content-between mb-3">
+                        <strong>Total:</strong>
+                        <strong id="cartTotal">₹0.00</strong>
+                    </div>
+                    <button type="button" class="btn w-100 checkout">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cart
+            let cart = [];
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            // Add to cart functionality
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    const img = this.getAttribute('data-img');
+                    
+                    // Check if item already exists in cart
+                    const existingItem = cart.find(item => item.id === id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id,
+                            name,
+                            price,
+                            img,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    
+                    // Show the offcanvas cart
+                    const offcanvas = new bootstrap.Offcanvas(document.getElementById('cartOffcanvas'));
+                    offcanvas.show();
+                });
+            });
+            
+            // Update cart display
+            function updateCart() {
+
+                // Update cart count
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                
+                // Show/hide empty cart message
+                if (cart.length === 0) {
+                    emptyCart.classList.remove('d-none');
+                    cartItems.classList.add('d-none');
+                } else {
+                    emptyCart.classList.add('d-none');
+                    cartItems.classList.remove('d-none');
+                    
+                    // Clear current cart items
+                    cartItemsList.innerHTML = '';
+                    
+                    // Add items to cart
+                    let total = 0;
+                    
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'list-group-item cart-item';
+                        cartItem.innerHTML = `
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <img src="${item.img}" class="cart-item-img me-3" alt="${item.name}">
+                                    <div>
+                                        <h6 class="my-0">${item.name}</h6>
+                                        <small class="text-muted">₹${item.price} x ${item.quantity}</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3">₹${itemTotal.toFixed(2)}</span>
+                                    <button class="btn btn-sm btn-outline-danger remove-item" data-id="${item.id}">
+                                      <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        cartItemsList.appendChild(cartItem);
+                    });
+                    
+                    // Update total
+                    cartTotal.textContent = `₹${total.toFixed(2)}`;
+                    
+                    // Add event listeners to remove buttons
+                    document.querySelectorAll('.remove-item').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const itemId = this.getAttribute('data-id');
+                            removeFromCart(itemId);
+                        });
+                    });
+                }
+            }
+            
+            // Remove item from cart
+            function removeFromCart(id) {
+                cart = cart.filter(item => item.id !== id);
+                updateCart();
+            }
+        });
+    </script>
+
+
+
 <section>
     <div class="home">
     <img src="Pickles.jpg" class="main" alt="">
@@ -112,7 +221,7 @@
   </div>
   <div class="card-body">
     <a href="#" class="card-link">View</a>
-    <a href="#" class="card-link add-to-cart">Add to cart</a>
+    <a href="#" class="card-link add-to-cart" data-id="1" data-name="Pickles Combo" data-price="300" data-img="combo.png">Add to cart</a>
   </div>
 </div>
 <div class="card"  style="width: 18rem;">
@@ -125,7 +234,7 @@
   </div>
   <div class="card-body">
     <a href="mango.html" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart"  data-id="2" data-name="Mango pickle" data-price="120" data-img="m.png">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -138,7 +247,7 @@
   </div>
   <div class="card-body">
     <a href="lemon.html" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart" data-id="3" data-name="Lemon pickle" data-price="140" data-img="lemon.png">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -151,7 +260,7 @@
   </div>
   <div class="card-body">
     <a href="chilli.html" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -164,7 +273,7 @@
   </div>
   <div class="card-body">
     <a href="ginger.html" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -177,7 +286,7 @@
   </div>
   <div class="card-body">
     <a href="#" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -190,7 +299,7 @@
   </div>
   <div class="card-body">
     <a href="#" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">

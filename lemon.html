@@ -78,8 +78,8 @@
             justify-content: center;
             align-items: center;
             margin: 0 100px;
-            padding-left: 250px;
-            gap: 25px;
+            padding-left: 360px;
+            gap: 28px;
         }
         .register{
             color: rgb(148, 94, 28);
@@ -99,14 +99,60 @@
             font-weight: bold;
         }
         
-        .btn{
-            background-color: rgb(189, 106, 106);
-            color: white;
-            width: 100px;
+        .cart-btn {
+            position: fixed;
+            z-index: 1050;
+            background-color: brown;
+            color:white;
+        }
+        .cart-btn:hover{
+            background-color: rgb(201, 116, 116);
 
         }
-        .btn:hover{
-            background-color: rgb(228, 177, 161);
+        .offcanvas {
+            width: 600px;
+            background-color: rgb(254, 234, 209);
+        }
+        .cart-item {
+            background-color: rgb(253, 221, 187);
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .cart-item-img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 40px 0;
+            color: #6c757d;
+        }
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            color: white;
+            background-color: burlywood;
+            border-radius: 50%;
+            width: 20px;
+            height: 25px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+        .checkout{
+            background-color: brown;
+            color: white;
+            font-weight: 500;
         }
 
          /* Navbar Media Queries */
@@ -198,7 +244,7 @@
         }
 
 
-        /* Banner Section Responsive */
+        /* Banner Section  */
     @media (max-width: 992px) {
         .main {
             height: 300px;
@@ -757,35 +803,162 @@
         </li>
         <li class="nav-item">
           <div class="contents">
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Cart
+        <button type="button" class="btn  position-relative cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+          <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge" id="cartCount">0</span>
         </button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Your cart is empty</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Buy it</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <a class="register" href="register.html">
-    <i class="fa-solid fa-lock"></i>
+  <i class="fa-solid fa-user"></i>
 </a>
 
 </div>
 </li>
 </div>
 </nav>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="cartOffcanvasLabel">Your Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div id="emptyCart" class="empty-cart">
+                <!-- <i class="bi bi-cart-x" style="font-size: 3rem;"></i> -->
+                <p>Your cart is empty</p>
+            </div>
+            <div id="cartItems" class="d-none">
+                <div class="list-group list-group-flush" id="cartItemsList">  
+                     
+                </div>
+                <div class="p-3 border-top">
+                    <div class="d-flex justify-content-between mb-3">
+                        <strong>Total:</strong>
+                        <strong id="cartTotal">₹0.00</strong>
+                    </div>
+                    <button type="button" class="btn w-100 checkout">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cart
+            let cart = [];
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const emptyCart = document.getElementById('emptyCart');
+            const cartItemsList = document.getElementById('cartItemsList');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            // Add to cart functionality
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    const img = this.getAttribute('data-img');
+                    
+                    // Check if item already exists in cart
+                    const existingItem = cart.find(item => item.id === id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id,
+                            name,
+                            price,
+                            img,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    
+                    // Show the offcanvas cart
+                    const offcanvas = new bootstrap.Offcanvas(document.getElementById('cartOffcanvas'));
+                    offcanvas.show();
+                });
+            });
+            
+            // Update cart display
+            function updateCart() {
+
+                // Update cart count
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                
+                // Show/hide empty cart message
+                if (cart.length === 0) {
+                    emptyCart.classList.remove('d-none');
+                    cartItems.classList.add('d-none');
+                } else {
+                    emptyCart.classList.add('d-none');
+                    cartItems.classList.remove('d-none');
+                    
+                    // Clear current cart items
+                    cartItemsList.innerHTML = '';
+                    
+                    // Add items to cart
+                    let total = 0;
+                    
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        total += itemTotal;
+                        
+                        const cartItem = document.createElement('div');
+                        cartItem.className = 'list-group-item cart-item';
+                        cartItem.innerHTML = `
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <img src="${item.img}" class="cart-item-img me-3" alt="${item.name}">
+                                    <div>
+                                        <h6 class="my-0">${item.name}</h6>
+                                        <small class="text-muted">₹${item.price} x ${item.quantity}</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="me-3">₹${itemTotal.toFixed(2)}</span>
+                                    <button class="btn btn-sm btn-outline-danger remove-item" data-id="${item.id}">
+                                      <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        cartItemsList.appendChild(cartItem);
+                    });
+                    
+                    // Update total
+                    cartTotal.textContent = `₹${total.toFixed(2)}`;
+                    
+                    // Add event listeners to remove buttons
+                    document.querySelectorAll('.remove-item').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const itemId = this.getAttribute('data-id');
+                            removeFromCart(itemId);
+                        });
+                    });
+                }
+            }
+            
+            // Remove item from cart
+            function removeFromCart(id) {
+                cart = cart.filter(item => item.id !== id);
+                updateCart();
+            }
+        });
+    </script>
+
+
+
 
 <section>
     <div class="banner">
@@ -822,7 +995,7 @@
     <p class="price">&#8377;<b>140.00 </b></p>
     <p class="about">Try Saraswathi Pickle's Tasty Lemon Pickle! <br>Our Kerala-style lemon pickle is made with the finest ingredients and features a unique blend of  lemon and aromatic spices. Perfect for adding a kick to your meals, 
         this pickle is a must have for any spice enthusiast.</p>
-    <a href="" class="cart">Add To Cart</a><br>
+    <a href="" class="cart add-to-cart" data-id="0" data-name="Lemon pickle" data-price="140" data-img="lemon.png">Add To Cart</a><br>
     <i class="fa-regular fa-heart" style="font-size: 16px;font-weight: 500; margin-top: 50px; margin-left: 10px;"></i><a href="" style="text-decoration: none;padding-left: 5px; color: black;font-size: 14px;font-weight: bold; margin-top: 40px;">ADD TO WISHLIST</a>
     <span><h5>Share Link:
         <i class="fa-brands fa-facebook" id="icon"></i> 
@@ -847,7 +1020,7 @@
   </div>
   <div class="card-body">
     <a href="" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart" data-id="1" data-name="Date Pickles" data-price="140" data-img="dates.png" >Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -860,7 +1033,7 @@
   </div>
   <div class="card-body">
     <a href="chilli.html" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -873,7 +1046,7 @@
   </div>
   <div class="card-body">
     <a href="ginger.html" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
@@ -886,7 +1059,7 @@
   </div>
   <div class="card-body">
     <a href="#" class="card-link">View</a>
-    <a href="#" class="card-link">Add to Cart</a>
+    <a href="#" class="card-link add-to-cart">Add to Cart</a>
   </div>
 </div>
 </div>
