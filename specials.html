@@ -97,7 +97,7 @@
         .cart-item {
             background-color: rgb(253, 221, 187);
             border-bottom: 1px solid #eee;
-            padding: 15px 0;
+            padding: 15px 20px;
         }
         .cart-item-img {
             width: 60px;
@@ -135,6 +135,10 @@
             color: white;
             font-weight: 500;
         }
+        .checkout:hover{
+            background-color: rgb(177, 108, 108);
+        }
+
 
         @media (max-width:995px){
             .navbar{
@@ -180,7 +184,30 @@
         @media (max-width:420px){
             .navbar{
                 position: fixed;
-            }
+            padding: 5px 0;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            height: auto;
+            min-height: 70px;
+            align-items: center;
+            overflow: hidden;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgb(250, 230, 205);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            will-change: transform;
+            contain: layout;
+        }
             .header{
                 display: none;
             }
@@ -192,11 +219,69 @@
             .logo{
                 display: flex;
                 justify-content: flex-end;
+                margin-left: 0;
+                flex: 1;
+            }
+            .logo img {
+                height: 50px;
+                margin-left: 0;
+                max-width: 100%;
             }
             .nav-item .contents{
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+                margin: 5px 0;
+                padding: 0;
+            }
+            .searchcontainer {
+                order: 3;
+                width: 100%;
+                margin: 10px 0;
+                padding: 0 10px;
+                box-sizing: border-box;
+            }
+            .searchcontainer form {
+                width: 100%;
+            }
+            .searchcontainer .form-control {
+                width: 100%;
+                max-width: 100%;
+            }
+            .navbar-toggler {
+                margin-right: 0;
+                order: 2;
+            }
+            .navbar-collapse {
+                order: 4;
+                width: 100%;
+            }
+            .navbar-nav {
+                padding-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-link {
+                padding: 10px 0;
+                display: block;
+                width: 100%;
+            }
+            .contents {
+                margin: 0;
+                padding-left: 0;
+                width: 100%;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .cart-btn {
+                position: relative;
+                margin: 5px 0;
+            }
+            .register {
+                margin: 5px 0;
             }
         }
         @media (max-width: 340px) {
@@ -212,7 +297,6 @@
                 margin-right: 0;
             }
         }
-        /* Large devices*/
         @media (min-width: 992px) {
             .navbar-nav {
                 gap: 20px;
@@ -297,6 +381,10 @@
             }
             .specials {
                 margin: 90px 20px;
+                width: calc(100% - 40px);
+                left: 0;
+                right: 0;
+                text-align: center;
             }
             .specials h6 {
                 font-size: 18px;
@@ -378,6 +466,7 @@
         @media (max-width: 576px) {
             .sub {
                 font-size: 24px;
+                margin: 10px 5px;
             }
             .grid {
                 margin: 15px 20px;
@@ -385,6 +474,7 @@
             }
             .pickle {
                 font-size: 14px;
+                text-align: left;
             }
         }
         
@@ -392,7 +482,7 @@
         .products{
             display: flex;
             justify-content: center;
-            margin: 40px;
+            margin: 30px;
         }
         .mrow{
             display: grid;
@@ -459,6 +549,7 @@
         @media (max-width: 1200px) {
             .mrow {
                 gap: 25px;
+                position: relative;
             }
             .card1 {
                 height: 420px;
@@ -471,6 +562,7 @@
             .mrow {
                 grid-template-columns: auto auto;
                 gap: 22px;
+                position: relative;
             }
             .card1 {
                 height: 400px;
@@ -487,6 +579,7 @@
             .mrow {
                 grid-template-columns: auto auto;
                 gap: 20px;
+                position: relative;
             }
             .card1 {
                 height: 380px;
@@ -511,10 +604,12 @@
         @media (max-width: 650px) {
             .mrow {
                 grid-template-columns: auto;
+                position: relative;
             }
             .card1 {
                 width: 18rem;
                 height: 400px;
+                margin: 0 auto;
             }
             .card1-img {
                 height: 200px;
@@ -526,11 +621,13 @@
             }
             .mrow {
                 gap: 15px;
+                position: relative;
             }
             .card1 {
                 width: 16rem;
                 height: 440px;
                 padding: 10px;
+                margin: 0 auto;
             }
             .card1-img {
                 height: 170px;
@@ -544,6 +641,8 @@
                 margin-left: 0;
                 width: 100%;
                 text-align: center;
+                display: block;
+                margin-top: 10px;
             }
         }
         @media (max-width: 400px) {
@@ -643,6 +742,7 @@
             .row {
                 grid-template-columns: auto auto auto;
                 gap: 20px;
+                position: relative;
             }
             .card {
                 height: 430px;
@@ -660,6 +760,7 @@
             .row {
                 grid-template-columns: auto auto;
                 gap: 22px;
+                position: relative;
             }
             .card {
                 height: 420px;
@@ -706,10 +807,12 @@
             }
             .row {
                 grid-template-columns: auto;
+                position: relative;
             }
             .card {
                 width: 18rem;
                 height: 420px;
+                margin: 0 auto;
             }
             .card-img {
                 height: 200px;
@@ -717,25 +820,38 @@
         }
         @media (max-width: 576px) {
             .head {
-                margin-left: 140px;
-                margin-top: 1380px;
+                margin-left: 0;
+                margin-top: 100px;
                 font-size: 24px;
+                position: relative;
+                width: 100%;
+                text-align: center;
             }
             .brined {
-                margin-top: 1450px;
-                margin-left: 40px;
+                margin-top: 120px;
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
             }
             .row {
                 gap: 15px;
+                position: relative;
+                width: 100%;
             }
             .card {
-                width: 16rem;
-                height: 450px;
-                margin-top: 20px;
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+                min-height: 450px;
+                margin: 10px auto;
                 padding: 10px;
             }
             .card-img {
                 height: 170px;
+                width: 100%;
+                max-width: 200px;
             }
             .card-title {
                 font-size: 13px;
@@ -745,16 +861,18 @@
         }
         @media (max-width: 400px) {
             .head {
-                margin-left: 90px;
-                margin-top: 230px;
+                margin-top: 80px;
                 font-size: 22px;
             }
             .card {
-                width: 14rem;
-                height: 380px;
+                width: 100%;
+                max-width: 250px;
+                height: auto;
+                min-height: 380px;
             }
             .card-img {
                 height: 150px;
+                max-width: 180px;
             }
         }
         
@@ -998,19 +1116,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="specials.html">Specials</a>
             </li>
-            <!-- <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle"  href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Shop by taste
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><b>Mango</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Lemon</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Amla</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Ginger</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Dates</b></a></li>
-            <li><a class="dropdown-item" href="#"><b>Grapes</b></a></li>
-         </ul>
-          </li> -->
+           
          <li class="nav-item">
                 <a class="nav-link" href="contact.html">Contact</a>
           </li>
@@ -1214,7 +1320,7 @@
           <h5 class="card1-title" style="text-align: center;">Tamarind Curry</h5>
           <p class="card1-text">Kerala special pulinji (pulinkari)</p>
           <p class="card1-desc"> 250g | Rs: 280</p>
-          <a href="#" class="cart" style="margin-left: 50px;">Add to cart</a>
+          <a href="#" class="cart add-to-cart" data-id="0" data-name="Tamarind curry" data-price="280" data-img="inji-puli.jpg"  style="margin-left: 50px;">Add to cart</a>
         </div>
         </div>
       </div>
@@ -1226,7 +1332,7 @@
           <p class="card1-text">Tasty and Spicy pickle</p>
           <p class="card1-desc"> 120g | Rs: 260</p>
 
-          <a href="#" class="cart">Add to cart</a>
+          <a href="#" class="cart add-to-cart" data-id="1" data-name="Dry Mango pickle" data-price="260" data-img="dry3.jpg">Add to cart</a>
         </div>
         </div>
       </div>
@@ -1255,7 +1361,7 @@
           <p class="card-text">Tasty mango brined </p>
           <p class="card-price"> 250g | Rs: 280</p>
           <a href="#" class="cart" style="margin-left: 10px;">View</a>
-          <a href="#" class="cart" style="margin-left: 10px;">Add to cart</a>
+          <a href="#" class="cart add-to-cart" data-id="4" data-name="Mango brined" data-price="280" data-img="mango brined.webp" style="margin-left: 10px;">Add to cart</a>
         </div>
         </div>
       </div>
@@ -1267,7 +1373,7 @@
           <p class="card-text">Salty gooseberry brined </p>
           <p class="card-price"> 250g | Rs: 280</p>
           <a href="#" class="cart" style="margin-left: 10px;">View</a>
-          <a href="#" class="cart" style="margin-left: 10px;">Add to cart</a>
+          <a href="#" class="cart add-to-cart" data-id="5" data-name="Gooseberry brined" data-price="280" data-img="amla brined.jpg" style="margin-left: 10px;">Add to cart</a>
         </div>
         </div>
       </div>
@@ -1279,7 +1385,7 @@
           <p class="card-text">Tasty pineapple brined</p>
           <p class="card-price"> 250g | Rs: 280</p>
           <a href="#" class="cart" style="margin-left: 10px;">View</a>
-          <a href="#" class="cart" style="margin-left: 10px;">Add to cart</a>
+          <a href="#" class="cart "  style="margin-left: 10px;">Add to cart</a>
         </div>
         </div>
       </div>
