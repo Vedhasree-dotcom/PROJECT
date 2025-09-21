@@ -38,7 +38,27 @@
         transform: translateX(-100%); 
       }
     }
+     /* Header Media Queries */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+            
+            .text {
+                font-size: 12px;
+                animation: scroll-text 8s linear infinite;
+            }
+        }
         
+        @media (max-width: 500px) {
+            header {
+                display: none;
+            }
+        }
+      
+     
+    /* .................................... */
+
         .navbar{
             display: flex;
             position: fixed;
@@ -83,11 +103,60 @@
             background-color: rgb(189, 106, 106);
             color: white;
             width: 100px;
-            margin-left: 40px;
 
         }
         .btn:hover{
             background-color: rgb(228, 177, 161);
+        }
+
+         /* Navbar Media Queries */
+        @media (max-width: 1200px) {
+            .navbar {
+                position: fixed;
+            }
+            
+            .contents {
+                margin: 0 50px;
+                padding-left: 150px;
+            }
+            
+            .logo img {
+                margin-left: 20px;
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .contents {
+                padding-left: 0;
+                margin: 0 20px;
+            }
+            
+            .navbar-nav {
+                padding-left: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                margin-top: 0;
+            }
+            
+            .contents {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo img {
+                margin: 10px auto;
+                display: block;
+            }
+            
+            .btn {
+                width: 80px;
+                font-size: 14px;
+            }
         }
         
          /* ............ */
@@ -127,6 +196,61 @@
         .shop a:hover{
             color: cornsilk;
         }
+
+
+        /* Banner Section Responsive */
+    @media (max-width: 992px) {
+        .main {
+            height: 300px;
+            margin-top: 100px;
+        }
+        
+        .shop {
+            margin: 150px 40px;
+        }
+        
+        .shop h6 {
+            font-size: 24px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .main {
+            height: 250px;
+            margin-top: 90px;
+        }
+        
+        .shop {
+            margin: 120px 20px;
+        }
+        
+        .shop h6 {
+            font-size: 20px;
+        }
+        
+        .shop a {
+            font-size: 14px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .main {
+            height: 200px;
+        }
+        
+        .shop {
+            margin: 100px 10px;
+        }
+        
+        .shop h6 {
+            font-size: 18px;
+            margin-top: 80px;
+        }
+        
+        .shop a {
+            font-size: 12px;
+        }
+    }
 
         /* .................. */
         .mainContainer{
@@ -195,8 +319,211 @@
             font-size: 15px;
             margin-left:10px ;
         }
+
+        /* Product Section Responsiveness */
+    @media (max-width: 1200px) {
+        .mainContainer {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #carouselExampleAutoplaying {
+            width: 100%;
+            margin-left: 0;
+            height: 500px;
+        }
+        
+        .carousel-inner {
+            height: 500px;
+        }
+        
+        .desc {
+            width: 100%;
+            padding: 0 20px;
+            margin-top: 30px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        #carouselExampleAutoplaying {
+            height: 400px;
+        }
+        
+        .carousel-inner {
+            height: 400px;
+        }
+        
+        .title {
+            font-size: 36px;
+        }
+        
+        .price {
+            font-size: 20px;
+        }
+        
+        .cart {
+            padding: 15px 80px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        #carouselExampleAutoplaying {
+            height: 300px;
+            margin-top: 80px;
+        }
+        
+        .carousel-inner {
+            height: 300px;
+        }
+        
+        .title {
+            font-size: 30px;
+        }
+        
+        .about {
+            font-size: 13px;
+        }
+        
+        .cart {
+            padding: 12px 60px;
+            font-size: 13px;
+        }
+    }
         
         /* ..................... */
+        
+         .sub {
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+            color: brown;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin: 10px 80px;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .row {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: auto auto;
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+        }
+        
+        .card {
+            height: 390px;
+            background-color: rgb(255, 247, 235);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: none;
+        }
+        
+        .card:hover {
+            transition: 0.8s;
+            transform: scale(1.1);
+            border: none;
+        }
+        
+        .card-img {
+            height: 220px;
+            width: auto;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .card-title {
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        .card-text {
+            font-size: 13px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+        .card-details {
+            font-size: 14px;
+            color: red;
+            font-weight: 500;
+        }
+        
+        .card-link {
+            text-decoration: none;
+            color: brown;
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-weight: 900;
+            padding: 0 13px;
+        }
+        
+        /* Products Media Queries */
+        @media (max-width: 1200px) {
+            .row {
+                gap: 70px;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto auto auto;
+            }
+            
+            .card {
+                width: 20rem;
+            }
+            
+            .sub {
+                margin: 45px 40px;
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .row {
+                gap: 40px;
+                grid-template-columns: auto;
+            }
+            
+            .card {
+                width: 18rem;
+                height: 360px;
+            }
+            
+            .sub {
+                margin: 35px 20px;
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .row {
+                gap: 20px;
+            }
+            
+            .card {
+                width: 16rem;
+                height: 340px;
+            }
+            
+            .card-img {
+                height: 180px;
+            }
+            
+            .sub {
+                margin: 25px 10px;
+                font-size: 24px;
+            }
+        }
+
+
 
         
 
@@ -320,19 +647,63 @@
         .copyright a:hover{
             text-decoration: underline;
         }
-        
-        @media (max-width: 768px) {
-            .footer-row {
-                flex-direction: column;
-            }
-            
-            .footer-box {
-                min-width: 100%;
-            }
+
+         @media (max-width: 992px) {
+        .footer-row {
+            flex-direction: column;
+            gap: 30px;
         }
+        
+        .footer-box {
+            min-width: 100%;
+        }
+        
+        .brand-section span {
+            font-size: 28px;
+        }
+        
+        .brand-section p {
+            font-size: 15px;
+        }
+    }
+    @media (max-width: 768px) {
+                .footer-row {
+                    flex-direction: column;
+                }
+                
+                .footer-box {
+                    min-width: 100%;
+                }
+            }
 
-
-
+    
+    @media (max-width: 576px) {
+        .footer {
+            padding: 30px 0 15px;
+            margin-top: 100px;
+        }
+        
+        .footer-card {
+            padding: 10px;
+        }
+        
+        .footer-card h5 {
+            font-size: 18px;
+        }
+        
+        .footer-links a {
+            font-size: 14px;
+        }
+        
+        .contact-info p {
+            font-size: 14px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            margin-top: 30px;
+        }
+    }
         
 
     </style>
@@ -464,6 +835,62 @@
 </div>
 </div>
 
+<h4 class="sub">Related Products</h4>
+<div class="container">
+    <div class="row col-md-6 col-sm-6 gx-4">
+    <div class="card" style="width: 18rem;">
+  <img src="mango.png" class="card-img-top" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title"> Tasty Mango Pickle</h5>
+    <p class="card-text">Tasty authentic home made mango pickles.</p>
+        <span class="card-details">200g | &#8377; 140</p>
+  </div>
+  <div class="card-body">
+    <a href="mango.html" class="card-link">View</a>
+    <a href="#" class="card-link">Add to Cart</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="chilli.png" class="card-img-top"  alt="..." >
+  <div class="card-body">
+    <h5 class="card-title"> Spicy chilli Pickle</h5>
+    <p class="card-text">Spicy authentic home made Chilly pickles.</p>
+        <span class="card-details">100g | &#8377; 200</p>
+
+  </div>
+  <div class="card-body">
+    <a href="chilli.html" class="card-link">View</a>
+    <a href="#" class="card-link">Add to Cart</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="lemon.png" class="card-img-top" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title"> Tasty Lemon Pickle</h5>
+    <p class="card-text">Tasty authentic home made Lemon pickles.</p>
+        <span class="card-details">200g | &#8377; 140</p>
+  </div>
+  <div class="card-body">
+    <a href="lemon.html" class="card-link">View</a>
+    <a href="#" class="card-link">Add to Cart</a>
+  </div>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="amla.png" class="card-img-top" alt="..." >
+  <div class="card-body">
+    <h5 class="card-title"> Sweet Amla Pickle</h5>
+    <p class="card-text">Tasty authentic home made Amla pickles.</p>
+        <span class="card-details">100g | &#8377; 180</p>
+
+  </div>
+  <div class="card-body">
+    <a href="#" class="card-link">View</a>
+    <a href="#" class="card-link">Add to Cart</a>
+  </div>
+</div>
+</div>
+</div>
+
 
 
 
@@ -531,45 +958,6 @@
 
 
 
-<!-- <script>
-    const emailRegex= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-
-
-    function validateField(fieldId){                     //parameter
-        const input=document.getElementById(fieldId);    //In this element is in input
-        const value=input.value.trim();     //trim() used to remove the space between value;and only take the values
-
-        if(fieldId === 'email'){             
-            if(!emailRegex.test(value)){
-                input.style.borderColor='red';
-                document.getElementById('emailError').style.visibility='visible';
-            }
-            else{
-                input.style.borderColor='#ccc';
-                document.getElementById('emailError').style.visibility='hidden';
-            }
-        }
-    }
-
-    function validateForm(e){
-      e.preventDefault();     // to prevents automatic submission
-
-
-      const emailInput = document.getElementById('email');
-
-      if(
-        emailRegex.test(emailInput.value.trim()) 
-       ) {
-        alert('Form is valid Ready to submit.');
-       } else{
-        alert('Please fix the errors in the form.');
-       }
-    }
-
-
-</script>
-
- -->
 
 
 
