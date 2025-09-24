@@ -5,30 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .button{
+        *{
+          margin: 0;
 
         }
+        body{
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background-color: rgb(252, 209, 152);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+
         .grid{
             display: flex;
+            gap: 40px;
             
         }
+
+        .pickle{
+          width: 700px;
+          height: 1012px;
+          margin: 0 0;
+          opacity: 0.6;
+          clip-path: polygon( 0 0,85% 0,90% 10%,85% 20%,90% 30%,85% 40%,90% 50%,85% 60%,90% 70%,
+              85% 80%,90% 90%,85% 100%,0 100%);
+        }
+
+        .brand{
+          font-size: 20px;
+          font-weight: 500;
+          margin-top: 20px;
+          color: brown;
+          padding-left: 340px;
+          font-style: italic;
+
+        }
+        h4{
+          font-size: 14px;
+          margin-top: 30px;
+          text-align: center;
+          color: rgb(156, 108, 5);
+        }
+
+
+        .form-group {
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: brown;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      background-color: rgb(248, 200, 138);
+      border: 1px solid rgb(154, 150, 150);
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .error-message {
+      color: rgb(250, 53, 4);
+      font-weight: 500;
+      font-size: 13px;
+      margin-top: 10px;
+      visibility: hidden;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background:brown; 
+      color: bisque;
+      border: none;
+      font-size: 14px;
+      margin-top: 15px;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: rgb(176, 84, 84);
+    }
+    .acc{
+      color: rgb(141, 79, 5);
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .sign{
+      color: rgb(198, 125, 125);
+      font-size: 14px;
+      padding-left: 5px;
+    }
+    .sign:hover{
+      color: brown;
+    }
     </style>
 
 </head>
 <body>
     <div class="grid">
         <div class="item1">
-            <img src="https://images.pexels.com/photos/20080821/pexels-photo-20080821.jpeg" alt="">
+            <img src="https://images.pexels.com/photos/20080821/pexels-photo-20080821.jpeg" class="pickle" alt="">
         </div>
         <div class="item2">
-        <img src="/All Pics/logo.png" alt=""><span class="title">Saraswathi Pickles</span>
+        <p class="brand">Saraswathi Pickles</p>
+
+        <h4>Create an account</h4>
 
          <form id="userForm">
-         <div class="form-group">
+        <div class="form-group">
          <label for="name">Username</label>
-         <input type="email" id="name" name="name" oninput="validateField('name')">    
-         <div id="nameError" class="error-message">Please enter your name</div>
-      </div>
+         <input type="name" id="name" name="name"> 
+         <div id="nameError" class="error-message">Please enter a valid name</div>
+        </div>
 
       <div class="form-group">
         <label for="email">Email</label>
@@ -51,7 +148,80 @@
         <button type="submit"  onclick="validateForm(event)">Sign Up</button>
 
         </form>
+
+        <p class="acc">Already have an account? <a href="login.html" class="sign">Sign in</a></p>
+
         </div>
-    </div>
+    </div> 
+
+<script>
+    const emailRegex= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    const passwordRegex= /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    const numberRegex= /^\+?[1-9][0-9]{7,14}$/;
+
+
+
+    function validateField(fieldId){                     //parameter
+        const input=document.getElementById(fieldId);    //In this element is in input
+        const value=input.value.trim();     //trim() used to remove the space between value;and only take the values
+
+        if(fieldId === 'email'){             
+            if(!emailRegex.test(value)){
+                input.style.borderColor='red';
+                document.getElementById('emailError').style.visibility='visible';
+            }
+            else{
+                input.style.borderColor='#ccc';
+                document.getElementById('emailError').style.visibility='hidden';
+            }
+        }
+        if(fieldId === 'password'){
+           if(!passwordRegex.test(value)){
+            input.style.borderColor = 'red';
+            document.getElementById('passwordError').style.visibility = 'visible';
+           }
+           else{
+            input.style.borderColor = '#ccc';
+            document.getElementById('passwordError').style.visibility = 'hidden';
+           }
+        }
+        if(fieldId === 'number'){
+           if(!numberRegex.test(value)){
+            input.style.borderColor = 'red';
+            document.getElementById('numberError').style.visibility = 'visible';
+           }
+           else{
+            input.style.borderColor = '#ccc';
+            document.getElementById('numberError').style.visibility = 'hidden';
+           }
+        }
+    }
+
+    function validateForm(e){
+      e.preventDefault();     // to prevents automatic submission
+
+
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const numberInput = document.getElementById('number');
+
+      if(
+        emailRegex.test(emailInput.value.trim()) &&
+        passwordRegex.test(passwordInput.value.trim()) &&
+        numberRegex.test(numberInput.value.trim())
+       ) {
+              // Redirect to index.html only when validation passes
+              window.location.href = 'login.html';
+
+       } else{
+        alert('Please fix the errors in the form.');
+       }
+    }
+  </script>
+
+
+
+
+
 </body>
 </html>
