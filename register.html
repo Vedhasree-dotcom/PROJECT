@@ -5,165 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    body {
-      background-image: linear-gradient(rgba(0,0,0,0.5)), url(1.-Website-Banner-Desktop-Size-1.jpg);
-      background-position:center;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      overflow-y: hidden;
-      
-    }
-    /* .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(226, 218, 209, 0.4);
-      z-index: 2;
-    } */
-    .logo img{
-            margin-left: 160px;
-            height: 75px;
-            border-radius: 70px;
-        }
-      h4{
-        text-align: center;
-        margin-top: 10px;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: 18px;
-        color: rgb(250, 247, 247);
-      }
+        .button{
 
-    
-    .form-container {
-      background-color: linear-gradient(rgba(185, 178, 178, 0.7));
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(211, 21, 124, 10);
-      width: 400px;
-      z-index: 2;
-    }
-    .form-group {
-      margin-top: 25px;
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      color: antiquewhite;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    input {
-      width: 100%;
-      padding: 8px;
-      background-color: rgb(220, 220, 176);
-      border: none;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    .error-message {
-      color: rgb(250, 53, 4);
-      font-weight: 500;
-      font-size: 13px;
-      margin-top: 10px;
-      visibility: hidden;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background:brown; 
-      color: white;
-      border: none;
-      margin-top: 40px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: rgb(240, 134, 134);
-    }
-    
-  </style>
+        }
+        .grid{
+            display: flex;
+            
+        }
+    </style>
+
 </head>
 <body>
-    <div class="form-container">
-      <div class="logo">
-            <img src="logo.png" alt="">
+    <div class="grid">
+        <div class="item1">
+            <img src="https://images.pexels.com/photos/20080821/pexels-photo-20080821.jpeg" alt="">
         </div>
-      <h4>Login</h4>
-      
-    <form id="userForm">
+        <div class="item2">
+        <img src="logo.png" alt=""><span class="title">Saraswathi Pickles</span>
+
+         <form id="userForm">
+         <div class="form-group">
+         <label for="name">Username</label>
+         <input type="email" id="name" name="name" oninput="validateField('name')">    
+         <div id="nameError" class="error-message">Please enter your name</div>
+      </div>
+
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" oninput="validateField('email')">    
         <div id="emailError" class="error-message">Please enter a valid email</div>
       </div>
+
       <div class="form-group">
         <label for="password">Password</label>
-        <!-- oninput update when we type anything on the input field -->
         <input type="password" id="password" name="password" oninput="validateField('password')">
         <div id="passwordError" class="error-message">Password must be 6+ characters with a letter and a number</div>
       </div>
-      <a href=""  style="margin-top: 0; margin-left: 300px; text-decoration: none; color: bisque;font-size: 13px;">Forgot Password</a>
-      <button type="submit"  onclick="validateForm(event)">Submit</button>
-    </form>
-  </div>
-  <script>
-    const emailRegex= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
-    const passwordRegex= /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-    function validateField(fieldId){                     //parameter
-        const input=document.getElementById(fieldId);    //In this element is in input
-        const value=input.value.trim();     //trim() used to remove the space between value;and only take the values
+      <div class="form-group">
+        <label for="number">Phone</label>
+        <input type="number" id="number" name="number" oninput="validateField('number')">
+        <div id="numberError" class="error-message">Number must be 10</div>
+      </div>
 
-        if(fieldId === 'email'){             
-            if(!emailRegex.test(value)){
-                input.style.borderColor='red';
-                document.getElementById('emailError').style.visibility='visible';
-            }
-            else{
-                input.style.borderColor='#ccc';
-                document.getElementById('emailError').style.visibility='hidden';
-            }
-        }
-        if(fieldId === 'password'){
-           if(!passwordRegex.test(value)){
-            input.style.borderColor = 'red';
-            document.getElementById('passwordError').style.visibility = 'visible';
-           }
-           else{
-            input.style.borderColor = '#ccc';
-            document.getElementById('passwordError').style.visibility = 'hidden';
-           }
-        }
-    }
+        <button type="submit"  onclick="validateForm(event)">Sign Up</button>
 
-    function validateForm(e){
-      e.preventDefault();     // to prevents automatic submission
-
-
-      const emailInput = document.getElementById('email');
-      const passwordInput = document.getElementById('password');
-
-      if(
-        emailRegex.test(emailInput.value.trim()) &&
-        passwordRegex.test(passwordInput.value.trim())
-       ) {
-        // alert('Login successful! Redirecting to home page...');
-              // Redirect to index.html only when validation passes
-              window.location.href = 'index.html';
-
-       } else{
-        alert('Please fix the errors in the form.');
-       }
-    }
-  </script>
-    
+        </form>
+        </div>
+    </div>
 </body>
 </html>
