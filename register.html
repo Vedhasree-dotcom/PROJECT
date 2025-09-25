@@ -63,8 +63,8 @@
     input {
       width: 100%;
       padding: 8px;
-      background-color: rgb(246, 191, 119);
-      border: 1px solid rgb(154, 150, 150);
+      background-color: rgb(248, 205, 149);
+      border: 1px solid rgb(77, 73, 73);
       border-top: none;
       border-left: none;
       border-right: none;
@@ -79,13 +79,15 @@
       visibility: hidden;
     }
     button {
-      width: 100%;
-      padding: 10px;
+      width: 80%;
+      padding: 15px;
       background:brown; 
       color: bisque;
       border: none;
       font-size: 14px;
-      margin-top: 15px;
+      font-weight: 600;
+      margin-top: 13px;
+      margin-left: 50px;
       border-radius: 30px;
       cursor: pointer;
     }
@@ -108,11 +110,105 @@
       color: brown;
     }
 
+   /* .............................. */
 
-       
+    @media (max-width: 1200px) {
+      .grid {
+        gap: 20px;
+      }
+      .item2{
+        margin-top: 60px;
+      }
+      .pickle {
+        width: 600px;
+      }
+      .brand {
+        padding-left: 200px;
+      }
+    }
 
- 
-       
+    @media (max-width: 1024px) {
+      .grid {
+        gap: 15px;
+      }
+      .pickle {
+        width: 450px;
+      }
+      .brand {
+        padding-left: 120px;
+      }
+      form {
+        width: 80%;
+        margin: auto;
+      }
+      .button{
+        margin-right: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        overflow-y: scroll;
+      }
+      .grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+      }
+      .pickle {
+        width: 90%;
+        height: 300px;
+        /* max-width: 400px; */
+      }
+      .brand {
+        padding-left: 0;
+        text-align: center;
+      }
+      form {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .pickle {
+        width: 100%;
+        height: 300px;
+        /* clip-path:none ; */
+      }
+      .brand {
+        font-size: 18px;
+      }
+      h4 {
+        font-size: 13px;
+      }
+      label {
+        font-size: 11px;
+      }
+      input {
+        font-size: 13px;
+      }
+      button {
+        font-size: 13px;
+        padding: 8px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      /* .grid {
+        padding: 10px;
+      } */
+      .pickle {
+        max-width: 250px;
+      }
+      .brand {
+        font-size: 16px;
+      }
+      .sign {
+        font-size: 13px;
+      }
+    }
+
+
     </style>
 
 </head>
