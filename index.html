@@ -97,10 +97,9 @@
             const cartItemsList = document.getElementById('cartItemsList');
             const cartTotal = document.getElementById('cartTotal');
             
-            // Add to cart functionality
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', function(e) {
-                    e.preventDefault();
+                    e.preventDefault();    // prevents link navigation
                     
                     const id = this.getAttribute('data-id');
                     const name = this.getAttribute('data-name');
@@ -122,15 +121,13 @@
                         });
                     }
                     
-                    updateCart();
+                    updateCart(); 
                     
-                    // Show the offcanvas cart
                     const offcanvas = new bootstrap.Offcanvas(document.getElementById('cartOffcanvas'));
                     offcanvas.show();
                 });
             });
             
-            // Update cart display
             function updateCart() {
 
                 // Update cart count
@@ -145,11 +142,11 @@
                     emptyCart.classList.add('d-none');
                     cartItems.classList.remove('d-none');
                     
-                    // Clear current cart items
-                    cartItemsList.innerHTML = '';
+                    cartItemsList.innerHTML = '';       // Clear current cart items
+
                     
-                    // Add items to cart
-                    let total = 0;
+                    let total = 0;           // Add items to cart
+
                     
                     cart.forEach(item => {
                         const itemTotal = item.price * item.quantity;
@@ -191,7 +188,6 @@
                 }
             }
             
-            // Remove item from cart
             function removeFromCart(id) {
                 cart = cart.filter(item => item.id !== id);
                 updateCart();

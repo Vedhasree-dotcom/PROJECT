@@ -263,8 +263,8 @@
 
 
 
-    function validateField(fieldId){                     //parameter
-        const input=document.getElementById(fieldId);    //In this element is in input
+    function validateField(fieldId){                    
+        const input=document.getElementById(fieldId);    
         const value=input.value.trim();     //trim() used to remove the space between value;and only take the values
 
         if(fieldId === 'email'){             
@@ -300,7 +300,7 @@
     }
 
     function validateForm(e){
-      e.preventDefault();     // to prevents automatic submission
+      e.preventDefault();     
 
 
       const emailInput = document.getElementById('email');
@@ -312,7 +312,7 @@
         passwordRegex.test(passwordInput.value.trim()) &&
         numberRegex.test(numberInput.value.trim())
        ) {
-              // Redirect to index.html only when validation passes
+              // Redirect to index.html 
               window.location.href = 'login.html';
 
        } else{

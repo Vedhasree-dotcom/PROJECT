@@ -222,8 +222,8 @@
     const emailRegex= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
     const passwordRegex= /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-    function validateField(fieldId){                     //parameter
-        const input=document.getElementById(fieldId);    //In this element is in input
+    function validateField(fieldId){                     
+        const input=document.getElementById(fieldId);    
         const value=input.value.trim();     //trim() used to remove the space between value;and only take the values
 
         if(fieldId === 'email'){             
@@ -249,7 +249,7 @@
     }
 
     function validateForm(e){
-      e.preventDefault();     // to prevents automatic submission
+      e.preventDefault();     
 
 
       const emailInput = document.getElementById('email');
@@ -259,8 +259,7 @@
         emailRegex.test(emailInput.value.trim()) &&
         passwordRegex.test(passwordInput.value.trim())
        ) {
-        // alert('Login successful! Redirecting to home page...');
-              // Redirect to index.html only when validation passes
+              // Redirect to index.html
               window.location.href = 'index.html';
 
        } else{
