@@ -824,7 +824,6 @@
         </div>
         <div class="offcanvas-body p-0">
             <div id="emptyCart" class="empty-cart">
-                <!-- <i class="bi bi-cart-x" style="font-size: 3rem;"></i> -->
                 <p>Your cart is empty</p>
             </div>
             <div id="cartItems" class="d-none">
@@ -880,13 +879,11 @@
                     
                     updateCart();
                     
-                    // Show the offcanvas cart
                     const offcanvas = new bootstrap.Offcanvas(document.getElementById('cartOffcanvas'));
                     offcanvas.show();
                 });
             });
             
-            // Update cart display
             function updateCart() {
 
                 // Update cart count
@@ -947,7 +944,6 @@
                 }
             }
             
-            // Remove item from cart
             function removeFromCart(id) {
                 cart = cart.filter(item => item.id !== id);
                 updateCart();
